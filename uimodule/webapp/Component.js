@@ -1,6 +1,10 @@
-sap.ui.define(
-    ["sap/ui/core/UIComponent", "sap/ui/Device", "com/myorg/documentSaver/model/models"],
-    function (UIComponent, Device, models) {
+sap.ui.define([
+  "sap/ui/core/UIComponent",
+  "sap/ui/Device",
+  "com/myorg/documentSaver/model/models",
+  "./Firebase"
+],
+    function (UIComponent, Device, models, Firebase) {
         "use strict";
 
         return UIComponent.extend("com.myorg.documentSaver.Component", {
@@ -22,6 +26,10 @@ sap.ui.define(
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                // Import Firebase in the sap.ui.define
+                // set the firebase model by calling the initializeFirebase function in the Firebase.js file
+                this.setModel(Firebase.initializeFirebase(), "firebase");
             }
         });
     }
